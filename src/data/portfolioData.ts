@@ -31,7 +31,7 @@ export const portfolioData: PortfolioData = {
     intro: "Software Developer | AWS Cloud + Full-Stack",
     name: "Sheng",
     roles: [
-      "AWS Certified Solutions Architect",
+      "AWS Certified Solutions Architect Associate",
       "Full-Stack Developer",
       "Cloud & AI Engineer",
     ],
@@ -221,7 +221,7 @@ export const portfolioData: PortfolioData = {
     socialLinks: [
       {
         label: "LinkedIn",
-        href: "https://www.linkedin.com/in/your-profile",
+        href: "https://www.linkedin.com/in/sheng-chen-chsh48/",
       },
       {
         label: "GitHub",
@@ -229,7 +229,7 @@ export const portfolioData: PortfolioData = {
       },
       {
         label: "Email",
-        href: "mailto:your.email@example.com",
+        href: "mailto:chsh48@gmail.com",
       },
     ],
   },
