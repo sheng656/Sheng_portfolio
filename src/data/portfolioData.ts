@@ -253,9 +253,9 @@ export const portfolioData: PortfolioData = {
       },
       {
         id: "project-havenly",
-        name: "小岛 · Havenly – Children's Emotional Support App",
+        name: "Havenly – Children's Emotional Support App",
         description:
-          "Bilingual (English/Chinese) emotional support web app for children, featuring a penguin AI companion '岛岛', age-differentiated UX across toddler/kid/teen modes, mood journalling, a garden growth system with a coin economy, and 7-day insights. Built with safety-first AI guardrails (crisis keyword detection, no medical diagnosis), NZ Privacy Act 2020 compliance considerations, and optional Firebase cloud sync.",
+          "Bilingual (English/Chinese) emotional support web app for children, featuring a penguin AI companion, age-differentiated UX across toddler/kid/teen modes, mood journalling, a garden growth system with a coin economy, and 7-day insights. Built with safety-first AI guardrails (crisis keyword detection, no medical diagnosis), NZ Privacy Act 2020 compliance considerations, and optional Firebase cloud sync.",
         techStack: [
           "React 19",
           "TypeScript",
