@@ -53,14 +53,10 @@ function About({ data }: AboutProps) {
 				</div>
 
 				<div>
-					<div
-						role="img"
-						aria-label={data.photoAlt}
-						className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-3xl border border-base-border bg-base-elevated/80"
-					>
-						<div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(19,199,164,0.24),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(12,160,132,0.22),transparent_45%),linear-gradient(160deg,rgba(19,29,47,0.1),transparent_70%)]" />
-						<div className="absolute inset-5 rounded-2xl border border-base-border/70" />
-						<div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-accent-500/25 bg-base-surface/75 p-4 backdrop-blur-sm">
+					<div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-3xl border border-base-border bg-base-elevated/80">
+						<img src={data.photoSrc} alt={data.photoAlt} className="h-full w-full object-cover" />
+						<div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,19,0.02),rgba(6,10,19,0.28))]" />
+						<div className="absolute inset-x-5 bottom-5 rounded-2xl border border-accent-500/25 bg-base-surface/75 p-4 backdrop-blur-sm">
 							<div className="flex items-center gap-3">
 								<span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent-500/22 text-accent-300">
 									<IconGlyph name="spark" className="h-4 w-4" />

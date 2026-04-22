@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import type { ContactData } from "../types";
 import IconGlyph from "./IconGlyph";
 
@@ -15,11 +14,6 @@ const socialIconByLabel: Record<string, string> = {
 
 function Contact({ data }: ContactProps) {
 	const headingId = `${data.id}-heading`;
-	const [formValues, setFormValues] = useState({
-		name: "",
-		email: "",
-		message: "",
-	});
 
 	return (
 		<motion.section
@@ -67,74 +61,18 @@ function Contact({ data }: ContactProps) {
 									</a>
 								</li>
 							);
-						})}
-					</ul>
-				</div>
-
-				<form
-					className="grid gap-4 rounded-2xl border border-base-border/80 bg-base-elevated/60 p-5"
-					onSubmit={(event) => {
-						event.preventDefault();
-					}}
-					aria-label={data.heading}
-				>
-					<label className="grid gap-1 text-sm text-muted" htmlFor="contact-name">
-						{data.formLabels.name}
-						<input
-							id="contact-name"
-							name="name"
-							type="text"
-							required
-							value={formValues.name}
-							onChange={(event) =>
-								setFormValues((values) => ({
-									...values,
-									name: event.target.value,
-								}))
-							}
-							className="rounded-xl border border-base-border bg-base-surface px-3 py-2 text-sm text-ink outline-none ring-accent-400 transition focus:ring-2"
-						/>
-					</label>
-
-					<label className="grid gap-1 text-sm text-muted" htmlFor="contact-email">
-						{data.formLabels.email}
-						<input
-							id="contact-email"
-							name="email"
-							type="email"
-							required
-							value={formValues.email}
-							onChange={(event) =>
-								setFormValues((values) => ({
-									...values,
-									email: event.target.value,
-								}))
-							}
-							className="rounded-xl border border-base-border bg-base-surface px-3 py-2 text-sm text-ink outline-none ring-accent-400 transition focus:ring-2"
-						/>
-					</label>
-
-					<label className="grid gap-1 text-sm text-muted" htmlFor="contact-message">
-						{data.formLabels.message}
-						<textarea
-							id="contact-message"
-							name="message"
-							required
-							rows={5}
-							value={formValues.message}
-							onChange={(event) =>
-								setFormValues((values) => ({
-									...values,
-									message: event.target.value,
-								}))
-							}
-							className="resize-none rounded-xl border border-base-border bg-base-surface px-3 py-2 text-sm text-ink outline-none ring-accent-400 transition focus:ring-2"
-						/>
-					</label>
-
-					<button
-						type="submit"
-						className="mt-1 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-surface-950 transition hover:bg-accent-400 hover:shadow-glow"
+								<div className="rounded-2xl border border-base-border/80 bg-base-elevated/60 p-5">
+									<p className="text-sm font-semibold text-ink">Best way to reach me</p>
+									<p className="mt-2 text-sm leading-relaxed text-muted">
+										Send me a message directly by email. I usually reply faster there than through social platforms.
+									</p>
+									<a
+										href={`mailto:${data.emailAddress}`}
+										className="mt-5 inline-flex rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-surface-950 transition hover:bg-accent-400 hover:shadow-glow"
+									>
+										Email me
+									</a>
+								</div>
 					>
 						{data.formLabels.submit}
 					</button>

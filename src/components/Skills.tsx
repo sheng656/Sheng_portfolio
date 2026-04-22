@@ -13,7 +13,7 @@ function Skills({ data }: SkillsProps) {
 		<motion.section
 			id={data.id}
 			aria-labelledby={headingId}
-			className="section-anchor rounded-3xl border border-base-border/70 bg-base-surface/65 p-6 shadow-soft md:p-10"
+			className="section-anchor rounded-3xl border border-base-border/70 bg-base-surface/65 p-5 shadow-soft md:p-7"
 			initial={{ opacity: 0, y: 28 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, amount: 0.22 }}
@@ -24,7 +24,7 @@ function Skills({ data }: SkillsProps) {
 			</h2>
 
 			<motion.div
-				className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+				className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3"
 				initial="hidden"
 				whileInView="visible"
 				viewport={{ once: true, amount: 0.22 }}
@@ -39,15 +39,15 @@ function Skills({ data }: SkillsProps) {
 				{data.categories.map((category) => (
 					<motion.article
 						key={category.id}
-						className="rounded-2xl border border-base-border/80 bg-base-elevated/60 p-4"
+						className="rounded-2xl border border-base-border/80 bg-base-elevated/60 p-3.5 md:p-4"
 						variants={{
 							hidden: { opacity: 0, y: 18 },
 							visible: { opacity: 1, y: 0 },
 						}}
 					>
-						<h3 className="font-display text-lg font-semibold text-ink">{category.title}</h3>
+						<h3 className="font-display text-base font-semibold text-ink md:text-lg">{category.title}</h3>
 						<motion.ul
-							className="mt-4 flex flex-wrap gap-2"
+							className="mt-3 flex flex-wrap gap-1.5"
 							initial="hidden"
 							whileInView="visible"
 							viewport={{ once: true, amount: 0.2 }}
@@ -69,8 +69,8 @@ function Skills({ data }: SkillsProps) {
 									}}
 									whileHover={{ y: -2 }}
 								>
-									<span className="inline-flex items-center gap-2 rounded-full border border-base-border bg-base-surface px-3 py-1.5 text-xs font-medium text-muted transition group-hover:border-accent-400/60 group-hover:bg-base-elevated group-hover:text-ink">
-										<IconGlyph name={tag.iconKey} className="h-3.5 w-3.5 text-accent-300" />
+									<span className="inline-flex items-center gap-1.5 rounded-full border border-base-border bg-base-surface px-2.5 py-1 text-[11px] font-medium text-muted transition group-hover:border-accent-400/60 group-hover:bg-base-elevated group-hover:text-ink">
+										<IconGlyph name={tag.iconKey} className="h-3 w-3 text-accent-300" />
 										{tag.name}
 									</span>
 								</motion.li>

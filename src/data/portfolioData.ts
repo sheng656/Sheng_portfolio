@@ -18,8 +18,8 @@ export const portfolioData: PortfolioData = {
     items: [
       { id: "about", label: "About", targetId: "about" },
       { id: "skills", label: "Skills", targetId: "skills" },
-      { id: "experience", label: "Experience", targetId: "experience" },
       { id: "projects", label: "Projects", targetId: "projects" },
+      { id: "experience", label: "Experience", targetId: "experience" },
       { id: "certifications", label: "Certifications", targetId: "certifications" },
       { id: "contact", label: "Contact", targetId: "contact" },
     ],
@@ -39,7 +39,7 @@ export const portfolioData: PortfolioData = {
       "I build scalable, cloud-native products with React, TypeScript, Node.js, and AWS serverless architecture — with a background in government management that keeps me focused on the why, not just the how.",
     actions: [
       { label: "View My Work", targetId: "projects", variant: "primary" },
-      { label: "Download CV", href: "/cv.pdf", variant: "secondary" },
+      { label: "Download CV", href: "/Sheng_Chen_CV.pdf", variant: "secondary" },
     ],
   },
   about: {
@@ -57,6 +57,7 @@ export const portfolioData: PortfolioData = {
       { iconKey: "languages", label: "Languages", value: "English, Mandarin" },
     ],
     photoAlt: "Sheng Chen – Software Developer",
+    photoSrc: "/Sheng.jpg",
   },
   skills: {
     id: "skills",
@@ -289,16 +290,11 @@ export const portfolioData: PortfolioData = {
     heading: "Contact",
     description:
       "I'm actively looking for full-time or part-time software development opportunities in Auckland. Open to full-stack, cloud, or AI-focused roles — happy to chat.",
-    formLabels: {
-      name: "Name",
-      email: "Email",
-      message: "Message",
-      submit: "Send Message",
-    },
     availability: {
       statusText: "Available immediately",
       isOpenToWork: true,
     },
+    emailAddress: "chsh48@gmail.com",
     socialLinks: [
       {
         label: "LinkedIn",
@@ -307,10 +303,6 @@ export const portfolioData: PortfolioData = {
       {
         label: "GitHub",
         href: "https://github.com/sheng656",
-      },
-      {
-        label: "Email",
-        href: "mailto:chsh48@gmail.com",
       },
     ],
   },

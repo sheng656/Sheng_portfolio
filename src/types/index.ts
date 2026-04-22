@@ -55,6 +55,7 @@ export interface AboutData {
   transitionStory: string[];
   highlights: HighlightItem[];
   photoAlt: string;
+  photoSrc: string;
 }
 
 export interface SkillTag {
@@ -139,16 +140,11 @@ export interface ContactData {
   id: string;
   heading: string;
   description: string;
-  formLabels: {
-    name: string;
-    email: string;
-    message: string;
-    submit: string;
-  };
   availability: {
     statusText: string;
     isOpenToWork: boolean;
   };
+  emailAddress: string;
   socialLinks: SocialLink[];
 }
 
