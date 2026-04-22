@@ -70,12 +70,11 @@ function Contact({ data }: ContactProps) {
 					<p className="mt-2 text-sm leading-relaxed text-muted">
 						Send me a message directly by email. I usually reply faster there than through social platforms.
 					</p>
-					<a
-						href={`mailto:${data.emailAddress}`}
-						className="mt-5 inline-flex rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-surface-950 transition hover:bg-accent-400 hover:shadow-glow"
-					>
-						Email me
-					</a>
+					<p className="mt-5 text-sm text-ink">
+						<a href={`mailto:${data.emailAddress}`} className="font-semibold text-ink underline decoration-accent-400 decoration-2 underline-offset-4 transition hover:text-accent-700">
+							{data.emailAddress}
+						</a>
+					</p>
 				</div>
 			</div>
 		</motion.section>

@@ -39,7 +39,7 @@ function CertificationBadge({ item }: { item: CertificationItem }) {
 						className="mt-3 inline-flex text-sm font-semibold text-accent-200 transition hover:text-accent-100"
 						aria-label={item.name}
 					>
-						{item.verificationUrl}
+						View on Credly
 					</a>
 				</div>
 			</div>

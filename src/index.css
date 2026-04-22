@@ -118,6 +118,17 @@ a {
   transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
 }
 
+.light .text-accent-100,
+.light .text-accent-200,
+.light .text-accent-300,
+.light .text-accent-400,
+.light .hover\:text-accent-100:hover,
+.light .hover\:text-accent-200:hover,
+.light .hover\:text-accent-300:hover,
+.light .hover\:text-accent-400:hover {
+  color: rgb(13 125 105);
+}
+
 @keyframes drift {
   0%,
   100% {

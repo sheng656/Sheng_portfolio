@@ -35,7 +35,9 @@ function About({ data }: AboutProps) {
 					</div>
 
 					<ul className="mt-8 grid gap-3 sm:grid-cols-2">
-						{data.highlights.map((highlight) => (
+						{data.highlights
+							.filter((highlight) => highlight.label !== "Languages")
+							.map((highlight) => (
 							<li
 								key={highlight.label}
 								className="flex items-center gap-3 rounded-2xl border border-base-border/80 bg-base-elevated/70 p-3"
@@ -56,15 +58,6 @@ function About({ data }: AboutProps) {
 					<div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-3xl border border-base-border bg-base-elevated/80">
 						<img src={data.photoSrc} alt={data.photoAlt} className="h-full w-full object-cover" />
 						<div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,19,0.02),rgba(6,10,19,0.28))]" />
-						<div className="absolute inset-x-5 bottom-5 rounded-2xl border border-accent-500/25 bg-base-surface/75 p-4 backdrop-blur-sm">
-							<div className="flex items-center gap-3">
-								<span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent-500/22 text-accent-300">
-									<IconGlyph name="spark" className="h-4 w-4" />
-								</span>
-								<span className="h-2 flex-1 rounded-full bg-base-border/80" />
-							</div>
-							<span className="mt-3 block h-2 w-3/4 rounded-full bg-base-border/80" />
-						</div>
 					</div>
 				</div>
 			</div>
