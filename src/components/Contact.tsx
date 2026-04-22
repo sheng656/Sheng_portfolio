@@ -61,22 +61,22 @@ function Contact({ data }: ContactProps) {
 									</a>
 								</li>
 							);
-								<div className="rounded-2xl border border-base-border/80 bg-base-elevated/60 p-5">
-									<p className="text-sm font-semibold text-ink">Best way to reach me</p>
-									<p className="mt-2 text-sm leading-relaxed text-muted">
-										Send me a message directly by email. I usually reply faster there than through social platforms.
-									</p>
-									<a
-										href={`mailto:${data.emailAddress}`}
-										className="mt-5 inline-flex rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-surface-950 transition hover:bg-accent-400 hover:shadow-glow"
-									>
-										Email me
-									</a>
-								</div>
+						})}
+					</ul>
+				</div>
+
+				<div className="rounded-2xl border border-base-border/80 bg-base-elevated/60 p-5">
+					<p className="text-sm font-semibold text-ink">Best way to reach me</p>
+					<p className="mt-2 text-sm leading-relaxed text-muted">
+						Send me a message directly by email. I usually reply faster there than through social platforms.
+					</p>
+					<a
+						href={`mailto:${data.emailAddress}`}
+						className="mt-5 inline-flex rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-surface-950 transition hover:bg-accent-400 hover:shadow-glow"
 					>
-						{data.formLabels.submit}
-					</button>
-				</form>
+						Email me
+					</a>
+				</div>
 			</div>
 		</motion.section>
 	);
