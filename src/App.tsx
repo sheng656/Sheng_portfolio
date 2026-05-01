@@ -42,12 +42,12 @@ function App() {
       <Navbar data={portfolioData.navbar} mode={mode} onToggleTheme={toggleTheme} />
       <main className="container flex flex-col gap-10 pb-24 pt-24 md:gap-14 md:pt-28">
         <Hero data={portfolioData.hero} />
+        <Projects data={portfolioData.projects} />
         <About data={portfolioData.about} />
         <Skills data={portfolioData.skills} />
-        <Projects data={portfolioData.projects} />
+        <Certifications data={portfolioData.certifications} />
         <Experience data={portfolioData.experience} />
         <Education data={portfolioData.education} />
-        <Certifications data={portfolioData.certifications} />
         <Contact data={portfolioData.contact} />
       </main>
     </div>

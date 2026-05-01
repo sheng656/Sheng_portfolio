@@ -16,11 +16,11 @@ export const portfolioData: PortfolioData = {
   navbar: {
     brand: "Sheng",
     items: [
+      { id: "projects", label: "Projects", targetId: "projects" },
       { id: "about", label: "About", targetId: "about" },
       { id: "skills", label: "Skills", targetId: "skills" },
-      { id: "projects", label: "Projects", targetId: "projects" },
-      { id: "experience", label: "Experience", targetId: "experience" },
       { id: "certifications", label: "Certifications", targetId: "certifications" },
+      { id: "experience", label: "Experience", targetId: "experience" },
       { id: "contact", label: "Contact", targetId: "contact" },
     ],
     ctaLabel: "Get In Touch",
