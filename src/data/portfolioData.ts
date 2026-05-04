@@ -226,7 +226,7 @@ export const portfolioData: PortfolioData = {
         ],
         links: [
           { label: "GitHub", href: "https://github.com/sheng656/AucklandWeekendPlanner" },
-          { label: "Live Demo", href: "https://auckland-weekend-planner.vercel.app/" },
+          { label: "Live Demo", href: "https://weekend.sheng.nz/" },
         ],
       },
       {
@@ -248,7 +248,7 @@ export const portfolioData: PortfolioData = {
         ],
         links: [
           { label: "GitHub", href: "https://github.com/sheng656/running-route-planner" },
-          { label: "Live Demo", href: "https://running-route-planner-sheng.vercel.app/" },
+          { label: "Live Demo", href: "https://running.sheng.nz/" },
         ],
       },
       {
@@ -266,7 +266,7 @@ export const portfolioData: PortfolioData = {
         ],
         links: [
           { label: "GitHub", href: "https://github.com/sheng656/HavenlyAPP" },
-          { label: "Live Demo", href: "https://havenly-app.vercel.app/" },
+          { label: "Live Demo", href: "https://havenly.sheng.nz/" },
         ],
       },
     ],
