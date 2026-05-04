@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import type { HeroData } from "../types";
+import { trackCVDownload } from "../lib/gtag";
+
 
 interface HeroProps {
 	data: HeroData;
@@ -131,6 +133,11 @@ function Hero({ data }: HeroProps) {
 										? "rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-surface-950 transition hover:-translate-y-0.5 hover:bg-accent-400 hover:shadow-glow"
 										: "rounded-full border border-base-border bg-base-elevated px-6 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-accent-400/70 hover:text-accent-200"
 								}
+								onClick={() => {
+									if (shouldDownload) {
+										trackCVDownload();
+									}
+								}}
 							>
 								{action.label}
 							</a>

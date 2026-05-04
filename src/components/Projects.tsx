@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { ProjectsData } from "../types";
 import IconGlyph from "./IconGlyph";
+import { trackProjectOpen, trackGithubClick } from "../lib/gtag";
 
 interface ProjectsProps {
 	data: ProjectsData;
@@ -57,6 +58,13 @@ function Projects({ data }: ProjectsProps) {
 										rel="noreferrer"
 										className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-200 transition hover:text-accent-100"
 										aria-label={`${item.name} ${link.label}`}
+										onClick={() => {
+											if (link.label.toLowerCase().includes("demo") || link.label.toLowerCase().includes("live")) {
+												trackProjectOpen(item.name);
+											} else if (link.label.toLowerCase().includes("github") || link.label.toLowerCase().includes("code")) {
+												trackGithubClick(item.name);
+											}
+										}}
 									>
 										<IconGlyph name="link" className="h-3.5 w-3.5" />
 										{link.label}
@@ -70,5 +78,6 @@ function Projects({ data }: ProjectsProps) {
 		</motion.section>
 	);
 }
+
 
 export default Projects;

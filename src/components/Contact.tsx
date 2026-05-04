@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { ContactData } from "../types";
 import IconGlyph from "./IconGlyph";
+import { trackContactClick } from "../lib/gtag";
 
 interface ContactProps {
 	data: ContactData;
@@ -55,6 +56,7 @@ function Contact({ data }: ContactProps) {
 										target="_blank"
 										rel="noreferrer"
 										className="inline-flex w-full items-center gap-3 rounded-xl border border-base-border bg-base-elevated/60 px-3 py-2 text-sm text-muted transition hover:border-accent-400/60 hover:text-ink"
+										onClick={() => trackContactClick(social.label)}
 									>
 										<IconGlyph name={iconName} className="h-4 w-4 text-accent-300" />
 										{social.label}
@@ -71,7 +73,7 @@ function Contact({ data }: ContactProps) {
 						Send me a message directly by email. I usually reply faster there than through social platforms.
 					</p>
 					<p className="mt-5 text-sm text-ink">
-						<a href={`mailto:${data.emailAddress}`} className="font-semibold text-ink underline decoration-accent-400 decoration-2 underline-offset-4 transition hover:text-accent-700">
+						<a href={`mailto:${data.emailAddress}`} className="font-semibold text-ink underline decoration-accent-400 decoration-2 underline-offset-4 transition hover:text-accent-700" onClick={() => trackContactClick("Email")}>
 							{data.emailAddress}
 						</a>
 					</p>
