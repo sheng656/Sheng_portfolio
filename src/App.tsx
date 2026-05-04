@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import About from "./components/About";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
@@ -50,6 +51,7 @@ function App() {
         <Education data={portfolioData.education} />
         <Contact data={portfolioData.contact} />
       </main>
+      <Analytics />
     </div>
   );
 }
