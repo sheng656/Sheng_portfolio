@@ -212,7 +212,7 @@ export const portfolioData: PortfolioData = {
         id: "project-auckland-weekend-planner",
         name: "Auckland Weekend Planner",
         description:
-          "A premium, AI-powered travel assistant that creates personalized weekend itineraries by blending real-time event data from Eventfinda with Claude 4.5 Haiku. Features intelligent geographical routing across 6 Auckland regions, a dynamic interactive timeline with activity swapping/management, and an optimized image delivery pipeline via S3 and CloudFront.",
+          "A premium AI-powered weekend itinerary assistant for Auckland. Aggregates real-time events from three sources — Eventfinda API, OurAuckland (Auckland Council portal), and Auckland for Kids — with intelligent deduplication across platforms. Claude 4.5 Haiku on Amazon Bedrock generates personalized plans filtered by audience, budget, and sub-region (Central, North Shore, West, South, East, Waiheke Island). Features a dynamic interactive timeline with activity swap/replace, an S3 + CloudFront image proxy for high-speed cover photos, real-time OpenWeather integration, and code-level content safety filtering — all secured with AWS SSM Parameter Store at zero credential cost.",
         techStack: [
           "Next.js 14+",
           "Tailwind CSS",
@@ -223,6 +223,9 @@ export const portfolioData: PortfolioData = {
           "DynamoDB",
           "Bedrock (Claude 4.5 Haiku)",
           "S3 + CloudFront",
+          "SSM Parameter Store",
+          "OpenWeather API",
+          "Jest",
         ],
         links: [
           { label: "GitHub", href: "https://github.com/sheng656/AucklandWeekendPlanner" },
@@ -233,18 +236,22 @@ export const portfolioData: PortfolioData = {
         id: "project-running-planner",
         name: "Auckland Running Route Planner",
         description:
-          "An intelligent running route planning application featuring distance-based generation, scenery preferences (parks, quiet streets, no stairs), and difficulty awareness. Includes a free-hand drawing mode with intelligent snapping to trails, live elevation profiles, and Garmin-ready GPX exports. Built with a high-performance serverless architecture.",
+          "An intelligent, interactive route planning app built for real runners. Generates optimized loops or one-way routes (1 km to marathon distance) with scenery preferences (parks, quiet streets, no stairs) and difficulty levels (flat/rolling/steep). Includes a free-hand drawing mode with automatic road/trail snapping via OpenRouteService, a live elevation profile chart with map-sync hover, scenic badge summaries, and Garmin-ready GPX 1.1 export. Backend is a fully serverless AWS SAM stack with strict coordinate validation, CORS protection, API key secrets managed via SSM Parameter Store, and AbortController-based race condition prevention. Accessibility upgraded with Radix UI primitives; full test coverage via Vitest across frontend and backend.",
         techStack: [
           "React 19",
           "TypeScript",
           "Vite",
           "Tailwind CSS",
-          "Mapbox GL",
+          "Mapbox GL JS",
+          "Mapbox GL Draw",
           "Recharts",
+          "Radix UI",
           "AWS SAM",
-          "Node.js 22.x",
+          "Lambda (Node.js 22.x)",
           "API Gateway",
+          "SSM Parameter Store",
           "OpenRouteService API",
+          "Vitest",
         ],
         links: [
           { label: "GitHub", href: "https://github.com/sheng656/running-route-planner" },
@@ -255,14 +262,14 @@ export const portfolioData: PortfolioData = {
         id: "project-havenly",
         name: "Havenly – Children's Emotional Support App",
         description:
-          "Bilingual (English/Chinese) emotional support web app for children, featuring a penguin AI companion, age-differentiated UX across toddler/kid/teen modes, mood journalling, a garden growth system with a coin economy, and 7-day insights. Built with safety-first AI guardrails (crisis keyword detection, no medical diagnosis), NZ Privacy Act 2020 compliance considerations, and optional Firebase cloud sync.",
+          "A bilingual (English/Chinese) emotional wellbeing web app targeting toddler, kid, and teen age groups with fully differentiated UX and age-aware AI system prompts. Core features: 10-emoji mood tracker with intensity scoring and journalling, an AI companion (GitHub Models / GPT-4o-mini) with crisis keyword pre-screening and a strict no-medical-diagnosis safety policy, a garden progression system with pets/plants, a coin economy, and streak rewards. Data insights provide 7-day and 30-day mood calendars with distribution analytics and positive ratio scoring. All data persists in localStorage by default; optional Firebase Firestore cloud sync is available via anonymous auth. Browser language is auto-detected at startup; manual EN/中文 switching is available on the home screen.",
         techStack: [
           "React 19",
           "TypeScript",
           "Vite",
           "CSS Modules",
-          "GitHub Models (AI)",
-          "Firebase (optional sync)",
+          "GitHub Models (GPT-4o-mini)",
+          "Firebase Firestore (optional)",
         ],
         links: [
           { label: "GitHub", href: "https://github.com/sheng656/HavenlyAPP" },
