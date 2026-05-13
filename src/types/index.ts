@@ -108,6 +108,7 @@ export interface ProjectItem {
   description: string;
   techStack: string[];
   links: ProjectLink[];
+  screenshots?: string[];
 }
 
 export interface ProjectsData {

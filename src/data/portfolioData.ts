@@ -212,7 +212,7 @@ export const portfolioData: PortfolioData = {
         id: "project-auckland-weekend-planner",
         name: "Auckland Weekend Planner",
         description:
-          "A premium AI-powered weekend itinerary assistant for Auckland. Aggregates real-time events from three sources — Eventfinda API, OurAuckland (Auckland Council portal), and Auckland for Kids — with intelligent deduplication across platforms. Claude 4.5 Haiku on Amazon Bedrock generates personalized plans filtered by audience, budget, and sub-region (Central, North Shore, West, South, East, Waiheke Island). Features a dynamic interactive timeline with activity swap/replace, an S3 + CloudFront image proxy for high-speed cover photos, real-time OpenWeather integration, and code-level content safety filtering — all secured with AWS SSM Parameter Store at zero credential cost.",
+          "An AI-powered travel assistant that aggregates real-time events from Eventfinda and Auckland Council to generate personalized, weather-aware weekend itineraries using Claude 4.5 Haiku and AWS Serverless.",
         techStack: [
           "Next.js 14+",
           "Tailwind CSS",
@@ -231,12 +231,13 @@ export const portfolioData: PortfolioData = {
           { label: "GitHub", href: "https://github.com/sheng656/AucklandWeekendPlanner" },
           { label: "Live Demo", href: "https://weekend.sheng.nz/" },
         ],
+        screenshots: ["/projects/planner-mobile-1.png", "/projects/planner-mobile-2.png"],
       },
       {
         id: "project-running-planner",
         name: "Auckland Running Route Planner",
         description:
-          "An intelligent, interactive route planning app built for real runners. Generates optimized loops or one-way routes (1 km to marathon distance) with scenery preferences (parks, quiet streets, no stairs) and difficulty levels (flat/rolling/steep). Includes a free-hand drawing mode with automatic road/trail snapping via OpenRouteService, a live elevation profile chart with map-sync hover, scenic badge summaries, and Garmin-ready GPX 1.1 export. Backend is a fully serverless AWS SAM stack with strict coordinate validation, CORS protection, API key secrets managed via SSM Parameter Store, and AbortController-based race condition prevention. Accessibility upgraded with Radix UI primitives; full test coverage via Vitest across frontend and backend.",
+          "A smart route planning tool for runners featuring AI-generated loops, free-hand drawing with road-snapping, live elevation profiles, and GPX exports for Garmin devices.",
         techStack: [
           "React 19",
           "TypeScript",
@@ -257,12 +258,13 @@ export const portfolioData: PortfolioData = {
           { label: "GitHub", href: "https://github.com/sheng656/running-route-planner" },
           { label: "Live Demo", href: "https://running.sheng.nz/" },
         ],
+        screenshots: ["/projects/running-mobile-1.png", "/projects/running-mobile-2.png"],
       },
       {
         id: "project-havenly",
         name: "Havenly – Children's Emotional Support App",
         description:
-          "A bilingual (English/Chinese) emotional wellbeing web app targeting toddler, kid, and teen age groups with fully differentiated UX and age-aware AI system prompts. Core features: 10-emoji mood tracker with intensity scoring and journalling, an AI companion (GitHub Models / GPT-4o-mini) with crisis keyword pre-screening and a strict no-medical-diagnosis safety policy, a garden progression system with pets/plants, a coin economy, and streak rewards. Data insights provide 7-day and 30-day mood calendars with distribution analytics and positive ratio scoring. All data persists in localStorage by default; optional Firebase Firestore cloud sync is available via anonymous auth. Browser language is auto-detected at startup; manual EN/中文 switching is available on the home screen.",
+          "A bilingual emotional support app for children with age-aware AI companionship, mood tracking, and a gamified garden system, focused on mental wellbeing and safety.",
         techStack: [
           "React 19",
           "TypeScript",
@@ -275,6 +277,7 @@ export const portfolioData: PortfolioData = {
           { label: "GitHub", href: "https://github.com/sheng656/HavenlyAPP" },
           { label: "Live Demo", href: "https://havenly.sheng.nz/" },
         ],
+        screenshots: ["/projects/havenly-mobile-1.png", "/projects/havenly-mobile-2.png"],
       },
     ],
   },
