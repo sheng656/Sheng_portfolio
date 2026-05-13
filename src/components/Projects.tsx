@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import type { ProjectsData, ProjectItem } from "../types";
 import IconGlyph from "./IconGlyph";
 import { trackProjectOpen, trackGithubClick } from "../lib/gtag";
@@ -7,56 +8,139 @@ interface ProjectsProps {
   data: ProjectsData;
 }
 
-function ProjectCard({ item, index }: { item: ProjectItem; index: number }) {
+interface ProjectCardProps {
+  item: ProjectItem;
+  index: number;
+  total: number;
+  prevId?: string;
+  nextId?: string;
+}
+
+function ProjectCard({ item, index, total, prevId, nextId }: ProjectCardProps) {
   const isEven = index % 2 === 0;
+  const [frontIdx, setFrontIdx] = useState(0);
+  const lastSwapTime = useRef(0);
+
+  const handleSwap = (idx: number, isClick = false) => {
+    const now = Date.now();
+    if (frontIdx !== idx && (isClick || now - lastSwapTime.current > 3000)) {
+      setFrontIdx(idx);
+      lastSwapTime.current = now;
+    }
+  };
 
   return (
     <motion.article
+      id={item.id}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.7, delay: index * 0.1 }}
-      className={`group flex flex-col gap-10 py-16 lg:py-24 ${
-        isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: 0.1 }}
+      className={`group flex min-h-[80vh] flex-col gap-8 py-12 lg:min-h-0 lg:gap-16 lg:py-20 ${
+        isEven ? "lg:flex-row-reverse" : "lg:flex-row"
       }`}
     >
+      {/* Visual Content (Interactive Layered Mockups) */}
+      {/* pb accounts for the back image's y-offset so it doesn't bleed into the text section */}
+      <div className={`flex flex-1 items-center justify-center ${isEven ? "lg:justify-end" : "lg:justify-start"}`}>
+        <div className="relative h-[420px] w-full max-w-[260px] pb-5 sm:h-[500px] sm:max-w-[340px] sm:pb-6">
+          <AnimatePresence mode="popLayout">
+            {[0, 1].map((idx) => {
+              const isFront = frontIdx === idx;
+              const screenshot = item.screenshots?.[idx];
+              if (!screenshot) return null;
+
+              return (
+                <motion.div
+                  key={`${item.id}-shot-${idx}`}
+                  layout
+                  onClick={() => handleSwap(idx, true)}
+                  onMouseEnter={() => handleSwap(idx)}
+                  initial={false}
+                  animate={{
+                    zIndex: isFront ? 20 : 10,
+                    // More x-offset, less y — back image shows its own content visibly
+                    x: isFront ? 0 : 56,
+                    y: isFront ? 0 : 20,
+                    scale: isFront ? 1 : 0.88,
+                    opacity: isFront ? 1 : 0.55,
+                    rotate: isFront ? 0 : 1,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 180,
+                    damping: 28,
+                  }}
+                  className={`absolute left-0 top-0 w-[80%] cursor-pointer overflow-hidden rounded-[2rem] border-2 shadow-xl transition-colors duration-500 sm:rounded-[2.5rem] sm:border-4 ${
+                    isFront 
+                      ? "border-base-border/40 bg-base-elevated" 
+                      : "border-base-border/10 bg-base-surface"
+                  }`}
+                >
+                  <div className="relative aspect-[9/19.5] overflow-hidden">
+                    <img
+                      src={screenshot}
+                      alt={`${item.name} screenshot ${idx + 1}`}
+                      className={`h-full w-full object-cover transition-all duration-700 ${
+                        !isFront ? "grayscale blur-[0.3px]" : "grayscale-0 blur-0"
+                      }`}
+                      loading="lazy"
+                    />
+                    {!isFront && (
+                      <div className="absolute inset-0 bg-accent-500/5 transition-opacity" />
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+
+          <motion.div 
+            animate={{ opacity: [0.03, 0.08, 0.03] }}
+            transition={{ duration: 6, repeat: Infinity }}
+            className={`absolute -inset-8 -z-10 bg-accent-500/10 blur-[80px] rounded-full ${isEven ? 'right-0' : 'left-0'}`} 
+          />
+        </div>
+      </div>
+
       {/* Text Content */}
       <div className="flex flex-1 flex-col justify-center">
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-sm font-medium text-accent-400">
-            Project {String(index + 1).padStart(2, "0")}
+        <div className="flex items-center gap-2">
+          <span className="font-mono text-xs font-bold tracking-widest text-accent-400">
+            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
-          <div className="h-px w-12 bg-base-border" />
+          <div className="h-[1px] w-8 bg-base-border" />
         </div>
         
-        <h3 className="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl">
+        <h3 className="mt-3 font-display text-2xl font-bold text-ink sm:text-3xl lg:text-4xl">
           {item.name}
         </h3>
         
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-muted lg:text-lg">
           {item.description}
         </p>
 
-        <ul className="mt-8 flex flex-wrap gap-2">
+        {/* Optimized Tech Tags */}
+        <ul className="mt-6 flex flex-wrap gap-1.5">
           {item.techStack.map((tech) => (
             <li
               key={tech}
-              className="rounded-lg border border-base-border bg-base-elevated/50 px-3 py-1.5 text-xs font-medium text-muted shadow-sm transition-colors hover:border-accent-500/30 hover:bg-accent-500/5"
+              className="inline-flex items-center gap-1.5 rounded-md border border-base-border/40 bg-base-elevated/30 px-2 py-0.5 text-[11px] font-medium text-muted transition-colors hover:border-accent-500/20 hover:text-accent-300"
             >
+              <span className="h-1 w-1 rounded-full bg-accent-500/60" />
               {tech}
             </li>
           ))}
         </ul>
 
-        <div className="mt-10 flex flex-wrap gap-6">
+        <div className="mt-8 flex flex-wrap gap-5">
           {item.links.map((link) => (
             <a
               key={`${item.id}-${link.label}`}
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="group/link inline-flex items-center gap-2 text-base font-semibold text-accent-300 transition-all hover:text-accent-100"
-              aria-label={`${item.name} ${link.label}`}
+              className="group/link inline-flex items-center gap-1.5 text-sm font-bold text-accent-300 transition-all hover:text-accent-100"
               onClick={() => {
                 if (link.label.toLowerCase().includes("demo") || link.label.toLowerCase().includes("live")) {
                   trackProjectOpen(item.name);
@@ -65,63 +149,28 @@ function ProjectCard({ item, index }: { item: ProjectItem; index: number }) {
                 }
               }}
             >
-              <IconGlyph name={link.label.toLowerCase().includes("github") ? "github" : "link"} className="h-4 w-4" />
+              <IconGlyph name={link.label.toLowerCase().includes("github") ? "github" : "link"} className="h-3.5 w-3.5" />
               {link.label}
-              <motion.span
-                className="inline-block"
-                initial={{ x: 0 }}
-                whileHover={{ x: 3 }}
-              >
-                →
-              </motion.span>
+              <span className="transition-transform group-hover/link:translate-x-1">→</span>
             </a>
           ))}
         </div>
-      </div>
 
-      {/* Visual Content (Layered Mockups) */}
-      <div className="flex flex-1 items-center justify-center lg:justify-end">
-        <div className="relative h-[400px] w-full max-w-[320px] sm:h-[500px] sm:max-w-[400px]">
-          {/* Background Mockup */}
-          {item.screenshots && item.screenshots[1] && (
-            <motion.div
-              className="absolute -right-4 top-12 z-0 w-[75%] overflow-hidden rounded-[2rem] border border-base-border/50 bg-base-surface shadow-xl sm:-right-8"
-              initial={{ x: 20, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 0.6 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              <img
-                src={item.screenshots[1]}
-                alt={`${item.name} screenshot 2`}
-                className="h-full w-full object-cover grayscale-[20%] transition-all duration-700 group-hover:grayscale-0"
-                loading="lazy"
-              />
-            </motion.div>
-          )}
+        {/* Mobile Navigation Footer */}
+        <div className="mt-auto flex items-center justify-between border-t border-base-border/30 pt-6 lg:hidden">
+          {prevId ? (
+            <a href={`#${prevId}`} className="text-xs font-bold uppercase tracking-tighter text-muted transition-colors hover:text-accent-400">
+              ← Prev
+            </a>
+          ) : <div />}
+          
+          <div className="text-[10px] font-bold text-base-border">PROJECT NAV</div>
 
-          {/* Foreground Mockup */}
-          {item.screenshots && item.screenshots[0] && (
-            <motion.div
-              className="absolute left-0 top-0 z-10 w-[80%] overflow-hidden rounded-[2.5rem] border-4 border-base-border/30 bg-base-elevated shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-              initial={{ y: 40, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="relative aspect-[9/19.5] overflow-hidden">
-                <img
-                  src={item.screenshots[0]}
-                  alt={`${item.name} screenshot 1`}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </motion.div>
-          )}
-
-          {/* Decorative Gradient Blob */}
-          <div className={`absolute -inset-10 -z-10 bg-accent-500/10 blur-[80px] rounded-full transition-opacity duration-500 group-hover:opacity-20 ${isEven ? 'right-0' : 'left-0'}`} />
+          {nextId ? (
+            <a href={`#${nextId}`} className="text-xs font-bold uppercase tracking-tighter text-muted transition-colors hover:text-accent-400">
+              Next →
+            </a>
+          ) : <div />}
         </div>
       </div>
     </motion.article>
@@ -133,19 +182,26 @@ function Projects({ data }: ProjectsProps) {
 
   return (
     <section id={data.id} aria-labelledby={headingId} className="section-anchor">
-      <div className="mb-12 flex flex-col items-center text-center">
+      <div className="mb-12 flex flex-col items-center text-center lg:mb-16">
         <h2 id={headingId} className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
           {data.heading}
         </h2>
-        <div className="mt-4 h-1.5 w-20 rounded-full bg-accent-500" />
-        <p className="mt-6 max-w-2xl text-muted">
-          A selection of my recent work, blending cloud-native architecture with premium frontend experiences.
+        <div className="mt-4 h-1 w-16 rounded-full bg-accent-500" />
+        <p className="mt-6 max-w-xl text-base text-muted lg:text-lg">
+          Cloud-native architecture blended with premium frontend experiences.
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="divide-y divide-base-border/20 space-y-8">
         {data.items.map((item, index) => (
-          <ProjectCard key={item.id} item={item} index={index} />
+          <ProjectCard 
+            key={item.id} 
+            item={item} 
+            index={index} 
+            total={data.items.length}
+            prevId={index > 0 ? data.items[index - 1].id : undefined}
+            nextId={index < data.items.length - 1 ? data.items[index + 1].id : undefined}
+          />
         ))}
       </div>
     </section>
