@@ -237,7 +237,7 @@ export const portfolioData: PortfolioData = {
         id: "project-running-planner",
         name: "Auckland Running Route Planner",
         description:
-          "A smart route planning tool for runners featuring AI-generated loops, free-hand drawing with road-snapping, live elevation profiles, and GPX exports for Garmin devices.",
+          "A smart route planning tool for runners featuring AI-generated loops, free-hand drawing with road-snapping, live elevation profiles, and GPX exports. Architected as a serverless dual-backend system supporting both AWS SAM (Node.js) and Microsoft Azure Functions (C#/.NET 8).",
         techStack: [
           "React 19",
           "TypeScript",
@@ -251,8 +251,11 @@ export const portfolioData: PortfolioData = {
           "Lambda (Node.js 22.x)",
           "API Gateway",
           "SSM Parameter Store",
+          "Azure Functions v4",
+          "C# .NET 8",
           "OpenRouteService API",
           "Vitest",
+          "dotnet test",
         ],
         links: [
           { label: "GitHub", href: "https://github.com/sheng656/running-route-planner" },

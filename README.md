@@ -14,7 +14,7 @@ A premium, AI-powered travel assistant that creates personalized weekend itinera
 
 ### 🏃 [Auckland Running Route Planner](https://running.sheng.nz/)
 An intelligent running route planning application featuring distance-based generation and elevation profiles.
-- **Tech Stack:** React 19, TypeScript, Mapbox GL, AWS SAM, Node.js 22.x.
+- **Tech Stack:** React 19, TypeScript, Mapbox GL, Dual Backend: AWS SAM (Node.js 22.x) / Azure Functions (C# .NET 8).
 - **Live Link:** [https://running.sheng.nz/](https://running.sheng.nz/)
 
 ### 🐧 [Havenly – Children's Emotional Support App](https://havenly.sheng.nz/)
