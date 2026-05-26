@@ -8,8 +8,8 @@ Visit the portfolio at: **[sheng.nz](https://sheng.nz)** (or your current portfo
 ## 🛠️ Featured Projects
 
 ### 🗓️ [Auckland Weekend Planner](https://weekend.sheng.nz/)
-A premium, AI-powered travel assistant that creates personalized weekend itineraries.
-- **Tech Stack:** Next.js 14+, Tailwind CSS, AWS Bedrock (Claude 4.5 Haiku), AWS CDK, Lambda, DynamoDB.
+A premium, AI-powered travel assistant that aggregates real-time events from Eventfinda, OurAuckland, and Auckland for Kids to generate personalized, weather-aware weekend itineraries.
+- **Tech Stack:** Next.js 14+, Tailwind CSS, AWS Bedrock (Claude 4.5 Haiku), AWS CDK, Lambda (Node.js 22.x), DynamoDB (Single-Table), S3 + CloudFront (CDN), Open-Meteo API.
 - **Live Link:** [https://weekend.sheng.nz/](https://weekend.sheng.nz/)
 
 ### 🏃 [Auckland Running Route Planner](https://running.sheng.nz/)

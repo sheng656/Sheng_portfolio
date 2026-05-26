@@ -212,7 +212,7 @@ export const portfolioData: PortfolioData = {
         id: "project-auckland-weekend-planner",
         name: "Auckland Weekend Planner",
         description:
-          "An AI-powered travel assistant that aggregates real-time events from Eventfinda and Auckland Council to generate personalized, weather-aware weekend itineraries using Claude 4.5 Haiku and AWS Serverless.",
+          "A premium, AI-powered travel assistant that aggregates real-time events from Eventfinda, OurAuckland, and Auckland for Kids to generate personalized, weather-aware weekend itineraries. Features an interactive timeline with activity swapping, advanced similarity-based event deduplication, a high-performance image proxy on AWS CloudFront, and a robust serverless architecture powered by Claude 4.5 Haiku on AWS Bedrock.",
         techStack: [
           "Next.js 14+",
           "Tailwind CSS",
@@ -220,11 +220,11 @@ export const portfolioData: PortfolioData = {
           "AWS CDK",
           "Lambda (Node.js 22.x)",
           "API Gateway",
-          "DynamoDB",
+          "DynamoDB (Single-Table)",
           "Bedrock (Claude 4.5 Haiku)",
-          "S3 + CloudFront",
+          "S3 + CloudFront (CDN)",
           "SSM Parameter Store",
-          "OpenWeather API",
+          "Open-Meteo API",
           "Jest",
         ],
         links: [
