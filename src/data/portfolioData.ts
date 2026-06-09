@@ -212,7 +212,7 @@ export const portfolioData: PortfolioData = {
         id: "project-auckland-weekend-planner",
         name: "Auckland Weekend Planner",
         description:
-          "A premium, AI-powered travel assistant that aggregates real-time events from Eventfinda, OurAuckland, and Auckland for Kids to generate personalized, weather-aware weekend itineraries. Features an interactive timeline with activity swapping, advanced similarity-based event deduplication, a high-performance image proxy on AWS CloudFront, and a robust serverless architecture powered by Claude 4.5 Haiku on AWS Bedrock.",
+          "An AI travel assistant that aggregates real-time local events to generate personalized, weather-aware weekend itineraries using Claude 4.5 Haiku and AWS Serverless.",
         techStack: [
           "Next.js 14+",
           "Tailwind CSS",
@@ -222,7 +222,7 @@ export const portfolioData: PortfolioData = {
           "API Gateway",
           "DynamoDB (Single-Table)",
           "Bedrock (Claude 4.5 Haiku)",
-          "S3 + CloudFront (CDN)",
+          "S3 + CloudFront",
           "SSM Parameter Store",
           "Open-Meteo API",
           "Jest",
@@ -237,7 +237,7 @@ export const portfolioData: PortfolioData = {
         id: "project-running-planner",
         name: "Auckland Running Route Planner",
         description:
-          "A smart route planning tool for runners featuring AI-generated loops, free-hand drawing with road-snapping, live elevation profiles, and GPX exports. Architected as a serverless dual-backend system supporting both AWS SAM (Node.js) and Microsoft Azure Functions (C#/.NET 8).",
+          "A smart route planner with AI-generated loops, road-snapping, elevation profiles, and GPX exports, built on a dual AWS/Azure serverless backend.",
         techStack: [
           "React 19",
           "TypeScript",
@@ -267,7 +267,7 @@ export const portfolioData: PortfolioData = {
         id: "project-havenly",
         name: "Havenly – Children's Emotional Support App",
         description:
-          "A bilingual emotional support app for children with age-aware AI companionship, mood tracking, and a gamified garden system, focused on mental wellbeing and safety.",
+          "A bilingual emotional support app for children featuring age-aware AI companionship, mood tracking, and a gamified garden system.",
         techStack: [
           "React 19",
           "TypeScript",
