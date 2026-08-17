@@ -264,6 +264,32 @@ export const portfolioData: PortfolioData = {
         screenshots: ["/projects/running-mobile-1.png", "/projects/running-mobile-2.png"],
       },
       {
+        id: "project-runstreak",
+        name: "RunStreak – Gamified Running Habit Tracker",
+        description:
+          "A full-stack gamified running habit tracker featuring multimodal AI screenshot activity import (Google Gemini), 48 unlockable achievement badges across 5 rarity tiers, iconic NZ route challenges, and a C# .NET 10 + Azure SQL backend.",
+        techStack: [
+          "React 19",
+          "TypeScript",
+          "Vite",
+          "Tailwind CSS",
+          "C# .NET 10",
+          "ASP.NET Core Web API",
+          "Entity Framework Core",
+          "Azure SQL Database",
+          "Azure App Service",
+          "Google Gemini AI",
+          "Zustand",
+          "HTML5 Canvas API",
+          "JWT Auth",
+        ],
+        links: [
+          { label: "GitHub", href: "https://github.com/sheng656/RunStreak" },
+          { label: "Live Demo", href: "https://runstreak.sheng.nz/" },
+        ],
+        screenshots: ["/projects/runstreak-mobile-1.jpg", "/projects/runstreak-mobile-2.png"],
+      },
+      {
         id: "project-havenly",
         name: "Havenly – Children's Emotional Support App",
         description:
